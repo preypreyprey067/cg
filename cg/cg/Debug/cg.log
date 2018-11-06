@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\cliente\downloads\openglroot\cg\cg\main.cpp(96): warning C4244: 'argument': conversion from 'Elem' to 'int32_t', possible loss of data
+          with
+          [
+              Elem=float
+          ]
+  cg.vcxproj -> C:\Users\Cliente\Downloads\OpenGLRoot\cg\Debug\cg.exe
