@@ -61,17 +61,20 @@ int main()
 
 		while (true)
 		{
+			x += 0.1f;
+			y += 0.1f;
+			z += 0.1f;
+
 			cg::Mat4x4 matTrans
 			{
 				1.0f, 0.0f, 0.0f, x,
-				0.0f, 1.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 1.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, y,
+				0.0f, 0.0f, 1.0f, z,
 				0.0f, 0.0f, 0.0f, 1.0f
 			};
 
 			ximplcg::__bufClr({ 0, 0 });
 
-			z += 0.1f;
 
 			for (const triangle& tri : mCube)
 			{
