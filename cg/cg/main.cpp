@@ -30,6 +30,7 @@ triangle mCube[] =
 
 int main()
 {
+	//creating the window information
 	cg::Window wnd("hello world", cg::iVec2D(425, 150),
 		cg::Font(cg::iVec2D(4, 4), cg::Font::Family::dontCare, cg::Font::Weight::bold , "Lucida Console"));
 
@@ -43,7 +44,8 @@ int main()
 	float fovrad = 60.0f;
 	float aspect = static_cast<float>(wnd.size().y) / wnd.size().x + 0.1f;
 	float fovr = 1.0f / std::tan(fovrad * 0.5f / 180.0f * 3.14159f);
-
+	
+	//creating the projection matrix
 	cg::Mat4x4 mat;
 
 	mat.get<0, 0>() = aspect * fovr;
@@ -64,6 +66,8 @@ int main()
 			x += 0.1f;
 			y += 0.1f;
 			z += 0.1f;
+			
+			//create a translation matrix
 
 			cg::Mat4x4 matTrans
 			{
@@ -73,14 +77,15 @@ int main()
 				0.0f, 0.0f, 0.0f, 1.0f
 			};
 
+			//clear the buffer color
 			ximplcg::__bufClr({ 0, 0 });
 
 
 			for (const triangle& tri : mCube)
 			{
-				
+				//applying matrices to the triangle
 				triangle triProj = { tri.a * matTrans * mat, tri.b  * matTrans * mat, tri.c * matTrans* mat };
-
+				
 				triProj.a.x += 1.0f;
 				triProj.a.y += 1.0f;
 				triProj.a = cg::scale(triProj.a,
@@ -95,7 +100,7 @@ int main()
 					cg::Vec3D(static_cast<float>(wnd.size().x), static_cast<float>(wnd.size().y), 1) * 0.5f);
 
 
-
+				//draw cube's triangles
 				ximplcg::__bufDrt(triProj.a.x, triProj.a.y, triProj.b.x, triProj.b.y, triProj.c.x, triProj.c.y, { 0, 255 });
 			}
 
